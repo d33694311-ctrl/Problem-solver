@@ -1,0 +1,114 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body, #root {
+    background: #ffffff;
+}
+
+body {
+    margin: 0;
+    font-family: "Courier Prime", "Courier New", monospace;
+    color: #0a0a0a;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+    background: #0a0a0a;
+    color: #ffffff;
+}
+
+@layer base {
+    :root {
+        --background: 0 0% 100%;
+        --foreground: 0 0% 4%;
+        --card: 0 0% 100%;
+        --card-foreground: 0 0% 4%;
+        --popover: 0 0% 100%;
+        --popover-foreground: 0 0% 4%;
+        --primary: 0 0% 4%;
+        --primary-foreground: 0 0% 100%;
+        --secondary: 0 0% 96%;
+        --secondary-foreground: 0 0% 4%;
+        --muted: 0 0% 96%;
+        --muted-foreground: 0 0% 33%;
+        --accent: 0 80% 60%;
+        --accent-foreground: 0 0% 100%;
+        --destructive: 0 84% 60%;
+        --destructive-foreground: 0 0% 100%;
+        --border: 0 0% 5%;
+        --input: 0 0% 5%;
+        --ring: 0 0% 5%;
+        --radius: 0rem;
+    }
+}
+
+@layer base {
+    * {
+        @apply border-border;
+    }
+    body {
+        @apply bg-background text-foreground;
+    }
+}
+
+/* Override Shadcn defaults to remove all rounded corners */
+button, input, textarea, select, [role="dialog"], .rounded-md, .rounded-lg, .rounded-sm, .rounded {
+    border-radius: 0 !important;
+}
+
+.font-sans-ui {
+    font-family: "Inter", system-ui, sans-serif;
+}
+
+.font-mono-print {
+    font-family: "Courier Prime", "Courier New", monospace;
+}
+
+.font-typewriter {
+    font-family: "Special Elite", "Courier Prime", monospace;
+}
+
+.tracking-widest-print {
+    letter-spacing: 0.18em;
+}
+
+/* Subtle paper grain */
+.paper-grain {
+    background-image:
+        radial-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+        radial-gradient(rgba(0, 0, 0, 0.02) 1px, transparent 1px);
+    background-size: 5px 5px, 7px 7px;
+    background-position: 0 0, 2px 2px;
+}
+
+/* Blinking cursor for typewriter */
+.cursor-blink::after {
+    content: "▌";
+    margin-left: 2px;
+    animation: blink 1s steps(2, start) infinite;
+    color: #0a0a0a;
+}
+@keyframes blink {
+    to {
+        visibility: hidden;
+    }
+}
+
+.print-rule {
+    background: repeating-linear-gradient(
+        to right,
+        #0a0a0a 0,
+        #0a0a0a 6px,
+        transparent 6px,
+        transparent 12px
+    );
+    height: 1px;
+}
+
+@layer base {
+    [data-debug-wrapper="true"] {
+        display: contents !important;
+    }
+}
